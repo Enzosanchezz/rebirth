@@ -23,6 +23,6 @@ conn.sync({ force: false }).then(async () => {
 
   server.listen(PORT || 3001, () => {
 
-    console.log("%s listening at 3001"); // eslint-disable-line no-console
+    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
 });
