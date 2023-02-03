@@ -21,7 +21,7 @@ conn.sync({ force: false }).then(async () => {
   await getAdmin();
   await getPets();
 
-  server.listen(PORT || 3001, () => {
+  server.listen(PORT || 7859, () => {
 
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
   });
