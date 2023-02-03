@@ -79,46 +79,46 @@ const router = Router();
 //   }
 // });
 
-router.get("/", async (req, res, next) => {
-  try {
-  const { type } = req.query;
-  const { name } = req.query;
-  const allPets = await Pets.findAll({order:[["createdAt", "ASC"]]});
-  let result = allPets; 
-  if (type) {
-    result = await allPets.filter((p) =>
-      p.type.toLowerCase().includes(type.toLowerCase())
-    );
-   }
-  if (name) {
-    result.length ? 
-    result = await result.filter((p) =>
-      p.name.toLowerCase().includes(name.toLowerCase())
-    ): result = await allPets.filter((p) =>
-    p.name.toLowerCase().includes(name.toLowerCase()))
-  } 
-  result.length
-    ? res.status(200).send(result)
-    : res.status(404).send('no se encontro mascota');
+// router.get("/", async (req, res, next) => {
+//   try {
+//   const { type } = req.query;
+//   const { name } = req.query;
+//   const allPets = await Pets.findAll({order:[["createdAt", "ASC"]]});
+//   let result = allPets; 
+//   if (type) {
+//     result = await allPets.filter((p) =>
+//       p.type.toLowerCase().includes(type.toLowerCase())
+//     );
+//    }
+//   if (name) {
+//     result.length ? 
+//     result = await result.filter((p) =>
+//       p.name.toLowerCase().includes(name.toLowerCase())
+//     ): result = await allPets.filter((p) =>
+//     p.name.toLowerCase().includes(name.toLowerCase()))
+//   } 
+//   result.length
+//     ? res.status(200).send(result)
+//     : res.status(404).send('no se encontro mascota');
    
-    } catch (error) {
-      next(error);
-    }
-});
+//     } catch (error) {
+//       next(error);
+//     }
+// });
 
 
 
-router.get("/", async (req, res, next) => {
-  try {
-    const { type, name } = req.query;
-    const allPets = await Pets.findAll();
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const { type, name } = req.query;
+//     const allPets = await Pets.findAll();
 
     
 
-  } catch (error) {
-      next(error);
-  }
-});
+//   } catch (error) {
+//       next(error);
+//   }
+// });
 
 
 

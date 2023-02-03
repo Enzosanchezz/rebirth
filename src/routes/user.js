@@ -96,25 +96,25 @@ const { Op } = require("sequelize");
 //   }
 // });
 
-router.get("/", async (req, res, next) => {
-  try {
-    const {userName} = req.query
-    const allUsers = await User.findAll()
-    if(userName){
-      const result = await allUsers.filter((u) =>
-      u.userName.toLowerCase().includes(userName.toLowerCase()))
-      result.length?
-        res.status(200).send(result) :
-        res.status(404).send("not found")
-    }else{  
-      allUsers.length
-      ? res.status(200).send(allUsers)
-      : res.status(400).send("No se encuentra ningun usuario");
-    }
-    } catch (error) {
-      next(error);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const {userName} = req.query
+//     const allUsers = await User.findAll()
+//     if(userName){
+//       const result = await allUsers.filter((u) =>
+//       u.userName.toLowerCase().includes(userName.toLowerCase()))
+//       result.length?
+//         res.status(200).send(result) :
+//         res.status(404).send("not found")
+//     }else{  
+//       allUsers.length
+//       ? res.status(200).send(allUsers)
+//       : res.status(400).send("No se encuentra ningun usuario");
+//     }
+//     } catch (error) {
+//       next(error);
+//   }
+// });
 
 router.post("/", async (req, res, next) => {
 
