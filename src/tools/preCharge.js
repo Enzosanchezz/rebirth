@@ -20,7 +20,6 @@ const getPets = async () => {
             race: p.race,
             location : p.location,
             userMail : p.userMail
-            // owner: p.owner,
           },
         });
       });
