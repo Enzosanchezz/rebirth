@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const { Message } = require("../db");
-const { Adoption,User,Pets } = require("../db");
+const { Message } = require("../db").default;
+const { Adoption,User,Pets } = require("../db").default;
 const router = Router();
 const { Op } = require("sequelize");
 

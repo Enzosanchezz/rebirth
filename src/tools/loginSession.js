@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const { SECRET_KEYWORD } = process.env;
-const { User } = require("../db");
+const { User } = require("../db").default;
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 

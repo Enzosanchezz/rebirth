@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Notification } = require("../db");
+const { Notification } = require("../db").default;
 
 router.get("/:mail", async (req, res, next) => {
   try {

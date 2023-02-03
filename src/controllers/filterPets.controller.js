@@ -1,5 +1,5 @@
 const { Op } = require('sequelize');
-const { Pets } = require('../db');
+const { Pets } = require('../db').default;
 const { getPagination, getPagingData } = require('../tools/paginateData.js')
 
 // FIND ALL PETS IN CASE JUST WANNA LOST TIME FILTER INTO THE FRONT

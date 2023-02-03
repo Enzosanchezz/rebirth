@@ -1,5 +1,5 @@
 const pets =  require("./pets.json");
-const {Pets} = require("../db");
+const {Pets} = require("../db").default;
 
 const getPets = async () => {
  
