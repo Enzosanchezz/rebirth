@@ -1,100 +1,100 @@
 const { Router } = require("express");
-const { updateUser } = require("../tools/userUpdate");
+// const { updateUser } = require("../tools/userUpdate");
 const router = Router();
 const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
-const { sendEmailConfirmation } = require("../tools/sendEmail.js");
+// const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 const {sendEmailUserBanned} = require("../tools/sendEmailUserBanned.js")
 const { Op } = require("sequelize");
-const { sendEmailUserRestored } = require("../tools/sendMailUserRestored");
+// const { sendEmailUserRestored } = require("../tools/sendMailUserRestored");
 
-router.get("/banned" , async (req, res, next) => {
-  try {
-    const users = await User.findAll({ where:{
-      softDelete: {
-        [Op.ne]: null
-        }},
-      paranoid : false
-    })
-    return res.status(200).send(users)
-  } catch (error) {
-    next(error)
-  }
-})
+// router.get("/banned" , async (req, res, next) => {
+//   try {
+//     const users = await User.findAll({ where:{
+//       softDelete: {
+//         [Op.ne]: null
+//         }},
+//       paranoid : false
+//     })
+//     return res.status(200).send(users)
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 
-router.put("/addFavs/:mail", async(req, res) =>{
-  const {mail}= req.params
-  const {favorites} = req.body
+// router.put("/addFavs/:mail", async(req, res) =>{
+//   const {mail}= req.params
+//   const {favorites} = req.body
  
-  try {
-    const users= await User.findByPk(mail)
-    const favBd = users["dataValues"].favorites;
-    const favUpdate = favBd.concat(favorites)
-    const userFavs = await User.findByPk(mail)
-    userFavs.update({favorites: favUpdate},{
-      where : {
-        mail : mail
-      }
-    })
-   return res.status(200).send(favUpdate)
-  } catch (error) {
-    res.send(error)
-  }
-})
+//   try {
+//     const users= await User.findByPk(mail)
+//     const favBd = users["dataValues"].favorites;
+//     const favUpdate = favBd.concat(favorites)
+//     const userFavs = await User.findByPk(mail)
+//     userFavs.update({favorites: favUpdate},{
+//       where : {
+//         mail : mail
+//       }
+//     })
+//    return res.status(200).send(favUpdate)
+//   } catch (error) {
+//     res.send(error)
+//   }
+// })
 
-router.put("/deleteFavs/:mail", async(req, res) =>{
-  const {mail}= req.params
-  const {id} = req.body
+// router.put("/deleteFavs/:mail", async(req, res) =>{
+//   const {mail}= req.params
+//   const {id} = req.body
  
-  try {
-    const users= await User.findByPk(mail)
-    const favBd = users["dataValues"].favorites;
-    const favUpdate = favBd.filter((f)=> f !== id)
-    const userFavs = await User.findByPk(mail)
-    userFavs.update({favorites: favUpdate},{
-      where : {
-        mail : mail
-      }
-    })
-   return res.status(200).send(favUpdate)
-  } catch (error) {
-    res.send(error)
-  }
-})
+//   try {
+//     const users= await User.findByPk(mail)
+//     const favBd = users["dataValues"].favorites;
+//     const favUpdate = favBd.filter((f)=> f !== id)
+//     const userFavs = await User.findByPk(mail)
+//     userFavs.update({favorites: favUpdate},{
+//       where : {
+//         mail : mail
+//       }
+//     })
+//    return res.status(200).send(favUpdate)
+//   } catch (error) {
+//     res.send(error)
+//   }
+// })
 
-router.put("/:mail", updateUser);
+// router.put("/:mail", updateUser);
 
-router.patch("/restore/:mail", async (req, res, next) => {
-  try {
-    const { mail } = req.params;
-    if(mail){
-      await User.restore({
-        where: { mail: mail },
-      });
-      sendEmailUserRestored(mail)
-      res.send("User Restored");
-    }else {
-      res.status(404).send("Not found")
-    }
-  } catch (error) {
-    next(error)
-  }
-});
+// router.patch("/restore/:mail", async (req, res, next) => {
+//   try {
+//     const { mail } = req.params;
+//     if(mail){
+//       await User.restore({
+//         where: { mail: mail },
+//       });
+//       sendEmailUserRestored(mail)
+//       res.send("User Restored");
+//     }else {
+//       res.status(404).send("Not found")
+//     }
+//   } catch (error) {
+//     next(error)
+//   }
+// });
 
-router.get("/:mail", async (req, res, next) => {
-  const { mail } = req.params;
-  try {
-    const userMail = await User.findByPk(mail);
-    if (!userMail) {
-      res.status(404).send("no se encontro el usuario con ese mail");
-    } else {
-      res.status(200).send(userMail);
-    }
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/:mail", async (req, res, next) => {
+//   const { mail } = req.params;
+//   try {
+//     const userMail = await User.findByPk(mail);
+//     if (!userMail) {
+//       res.status(404).send("no se encontro el usuario con ese mail");
+//     } else {
+//       res.status(200).send(userMail);
+//     }
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.get("/", async (req, res, next) => {
   try {
@@ -165,20 +165,20 @@ router.put("/adm/:mail" , async (req, res, next) =>{
   }
 })
 
-router.get("/favs/:mail", async (req, res) =>{
-  const {mail} = req.params
-  try {
-    const userFav = await User.findByPk(mail)
-    if(userFav.dataValues.favorites.length){
-      res.status(200).send(userFav.dataValues.favorites)
-    }else{
-      res.status(404).send("no hay favs")
-    }
+// router.get("/favs/:mail", async (req, res) =>{
+//   const {mail} = req.params
+//   try {
+//     const userFav = await User.findByPk(mail)
+//     if(userFav.dataValues.favorites.length){
+//       res.status(200).send(userFav.dataValues.favorites)
+//     }else{
+//       res.status(404).send("no hay favs")
+//     }
 
-  } catch (error) {
-    res.status(404).send(error.message)
-  }
-})
+//   } catch (error) {
+//     res.status(404).send(error.message)
+//   }
+// })
 
 
 

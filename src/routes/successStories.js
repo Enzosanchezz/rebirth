@@ -19,14 +19,14 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/", async (req, res, next) => {
-  try {
-    const testimonios = await SuccessStories.findAll();
-    res.send(testimonios);
-  } catch (error) {
-    next(error);
-  }
-});
+// router.get("/", async (req, res, next) => {
+//   try {
+//     const testimonios = await SuccessStories.findAll();
+//     res.send(testimonios);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 router.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
