@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { updateUser } = require("../tools/userUpdate");
 const router = Router();
-const { User } = require("../db").default;
+const { User } = require("../db");
 const { getUserInfo } = require("../tools/getUserInfo.js");
 const { sendEmailConfirmation } = require("../tools/sendEmail.js");
 const {sendEmailUserBanned} = require("../tools/sendEmailUserBanned.js")

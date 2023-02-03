@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Pets } = require("../db").default;
+const { Pets } = require("../db");
 const router = Router();
 const {Op} = require("sequelize")
 

@@ -4,8 +4,8 @@
 //    ▒▒▒▒▒▒█▀▀█▀▀██▀██▒▒▒▒▒
 //    ▒▒▒▒▒▄█▒▄█▒▒▄█▒▄█▒▒▒▒▒
 //    ~~~~~~~~~~~~~~~~~~~~~~
-const server = require("./src/app.js").default;
-const { conn } = require("./src/db.js").default;
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
 const { getPets } = require("./src/tools/preCharge.js");
 const { getAdmin } = require("./src/tools/preChargeAdmin.js");
 const { getTestimonials } = require("./src/tools/preChargeTestimonials.js");

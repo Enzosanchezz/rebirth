@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { User } = require("../db").default;
+const { User } = require("../db");
 
 
 const updateUser = async (req, res, next) => {

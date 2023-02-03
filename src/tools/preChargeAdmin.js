@@ -1,5 +1,5 @@
 const admin =  require("./admin.json");
-const {User} = require("../db").default;
+const {User} = require("../db");
 const getAdmin = async () => {
   try {
       admin.forEach((a) => {

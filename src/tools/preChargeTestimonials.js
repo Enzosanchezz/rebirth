@@ -1,5 +1,5 @@
 const testimonials = require('./testimonials.json')
-const {SuccessStories} = require('../db').default
+const {SuccessStories} = require('../db')
 
 const getTestimonials = async() => {
     try {

@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { SuccessStories } = require("../db").default;
+const { SuccessStories } = require("../db");
 const router = Router();
 
 router.post("/", async (req, res, next) => {

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Adoption } = require("../db").default;
+const { Adoption } = require("../db");
 const { Op } = require("sequelize");
 
 router.get("/:id", async (req, res, next) => {
