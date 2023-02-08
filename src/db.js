@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-import * as pg from 'pg';
+const pg = require('pg');
 
 const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, PORT } = process.env;
 
