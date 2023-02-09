@@ -26,7 +26,7 @@ router.post("/", async (req, res) =>{
       ],
          
         back_urls: {
-          "success": `${REDIRECT_BACK}/donations/pagos`,
+          "success": "https://rebirth.up.railway.app/donations/pagos",
           "failure": `${REDIRECT_FRONT}/home`,
           "pending": `${REDIRECT_FRONT}/home`
       },
