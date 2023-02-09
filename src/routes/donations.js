@@ -49,7 +49,7 @@ router.post("/", async (req, res) =>{
 });
 
 router.get('/pagos', function(req, res) {
-    return res.redirect(`${REDIRECT_FRONT}/home`)
+    return res.redirect(`${REDIRECT_FRONT}`)
 })
 
 module.exports = router;
