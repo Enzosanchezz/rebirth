@@ -49,7 +49,7 @@ router.post("/", async (req, res) =>{
 });
 
 router.get('/pagos', function(req, res) {
-    return res.redirect("http://localhost:3000/home")
+    return res.redirect(`${REDIRECT_FRONT}/home`)
 })
 
 module.exports = router;
