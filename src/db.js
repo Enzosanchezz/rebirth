@@ -8,15 +8,13 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, PORT } = process.env;
 
 
 const sequelize = new Sequelize(
-  // `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DATABASE}`,
-  `postgresql://"postgres":"PhUABasHu4f1xWNkb41n"@"containers-us-west-134.railway.app":"7859"/"rebirth"`,
+  `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DATABASE}`,
   // `postgresql://${{ DB_USER }}:${{ DB_PASSWORD }}@${{ DB_HOST }}:${{ PORT }}/${{ DATABASE }}`,
   // process.env.DATABASE_URL,
   {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
     timestamps: false,
-    dialect: 'postgres',
     dialectModule: pg,
     // dialectOptions: {
     //   ssl: {
