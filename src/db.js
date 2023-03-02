@@ -9,7 +9,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, PORT } = process.env;
 
 const sequelize = new Sequelize(
   // `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DATABASE}`,
-  `postgresql://"postgres":"1234"@"localhost":"3001"/"rebirth"`,
+  `postgresql://"postgres":"PhUABasHu4f1xWNkb41n"@"containers-us-west-134.railway.app":"7859"/"rebirth"`,
   // `postgresql://${{ DB_USER }}:${{ DB_PASSWORD }}@${{ DB_HOST }}:${{ PORT }}/${{ DATABASE }}`,
   // process.env.DATABASE_URL,
   {
