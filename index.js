@@ -17,6 +17,6 @@ conn.sync({ force: false }).then(async () => {
   await getPets();
   
   server.listen(PORT || 7859, () => {
-    console.log(`%s listening at port -->${PORT}`);
+    console.log(`%s listening at port -->${PORT}`); 
   });
 });
