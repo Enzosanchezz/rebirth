@@ -23,7 +23,7 @@ server.set((req, res, next) => {
   next();
 });
 
-export default app;
+// export default app;
 server.set('/', routes);
 
 // Error catching endware.
