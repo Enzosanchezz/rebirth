@@ -8,7 +8,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DATABASE, PORT } = process.env;
 
 
 const sequelize = new Sequelize(
-  `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DATABASE}`,
+  `postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${PORT}/${DATABASE}`,
   // `postgresql://${{ DB_USER }}:${{ DB_PASSWORD }}@${{ DB_HOST }}:${{ PORT }}/${{ DATABASE }}`,
   // process.env.DATABASE_URL,
   {
@@ -52,44 +52,30 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Pets, Message, Adoption, SuccessStories, User,Notification } = sequelize.models;
 
-//    1:1  --->>> hasOne a belongsTo
-//    1:n  --->>> hasMany a benlongsTo
-//    n:n  --->>> belongsToMany
-
-User.hasMany(Adoption); // un usuario puede hacer o tener diferentes solicitudes y una solicitud pertenece a un usuario
-Adoption.belongsTo(User, { as: "owner", foreignKey: "ownerMail" }); // el dueño puede hacer o tener diferentes solicitudes y una solicitud pertenece a el dueño
+User.hasMany(Adoption); 
+Adoption.belongsTo(User, { as: "owner", foreignKey: "ownerMail" });
 Adoption.belongsTo(User, { as: "adopter", foreignKey: "userMail" });
 
 Pets.hasMany(Adoption);
 Adoption.belongsTo(Pets);
 //----------------------------//
 
-User.hasMany(Pets); //el dueño puede adoptar diferentes mascotas y una mascota pertenece a el dueño
+User.hasMany(Pets);
 Pets.belongsTo(User);
 
 //----------------------------//
 
-User.hasMany(SuccessStories); // un usuario puede tener distintos casos de exito y un caso de exito pertenece a un usuario
-SuccessStories.belongsTo(User); // el dueño puede tener distintos casos de exito y un caso de exito pertenece a el dueño
+User.hasMany(SuccessStories);
+SuccessStories.belongsTo(User); 
 
 //---------------------------//
 
-Adoption.hasMany(Message); //un usuario puede tener distintos chat y un chat pertenece a un usuario
-Message.belongsTo(Adoption, { foreignKey: "adoptionId" }); // el dueño puede tener distintos chat y un chat pertenece a el dueño
+Adoption.hasMany(Message); 
+Message.belongsTo(Adoption, { foreignKey: "adoptionId" }); 
 
-User.hasOne(Notification);//un usuario puede tener una notificacion
-Notification.belongsTo(User); // la notificacion pertenece a un usuario
+User.hasOne(Notification);
+Notification.belongsTo(User); 
 
-// siendo adoptante
-//  user --> muchas --> pets
-//  pets --> un --> user
-
-// siendo dador de mascota
-//  user --> muchas --> pets
-//  pets --> un --> user
-
-// Aca vendrian las relaciones
-// Product.hasMany(Reviews);
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
