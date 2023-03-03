@@ -11,7 +11,6 @@ const server = express();
 
 // server.name = 'API';
 server.set(express.json());
-server.set(cors());
 server.set(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.set(bodyParser.json({ limit: '50mb' }));
 server.set(cookieParser());
